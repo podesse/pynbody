@@ -190,7 +190,25 @@ class RockstarCatalogueOneCpu(HaloCatalogue):
                           ('flags',np.int64),('n_core',np.int64),
                           ('min_pos_err','f'),('min_vel_err','f'),
                           ('min_bulkvel_err','f')], align=True), # Rockstar format v2, includes halfmass_radius
-
+        3: np.dtype([('id',np.int64),('pos','f',3),('vel','f',3),
+                          ('corevel','f',3),('bulkvel','f',3),('m','f'),
+                          ('r','f'),
+                          ('child_r','f'),('vmax_r','f'),('mgrav','f'),
+                          ('vmax','f'),('rvmax','f'),('rs','f'),
+                          ('klypin_rs','f'),('vrms','f'),('J','f',3),
+                          ('energy','f'),('spin','f'),('alt_m','f',4),
+                          ('Xoff','f'),('Voff','f'),('b_to_a','f'),
+                          ('c_to_a','f'),('A','f',3),('b_to_a2','f'),
+                          ('c_to_a2','f'),('A2','f',3),('bullock_spin','f'),
+                          ('kin_to_pot','f'),('m_pe_b','f'),('m_pe_d','f'), # No halfmass_raidus in halo.h
+                          ('num_p',np.int64),('num_child_particles',np.int64),
+                          ('p_start',np.int64),('desc',np.int64),
+                          ('flags',np.int64),('n_core',np.int64),
+                          ('min_pos_err','f'),('min_vel_err','f'),
+                          ('min_bulkvel_err','f'), 
+                          ('type',np.int32),('sm','f'),('gas','f'),('bh','f'),
+                          ('peak_density','f'),('av_density','f')], align=True) # Rockstar-Galaxies format v2, excludes halfmass_radius
+        ,# Unsure if pynbody supports the extra_halo_info in halo.h. Excluding it for now.
         'caterpillar': np.dtype([('id',np.int64),
                                  ('pos','f',3),('vel','f',3),
                           ('corevel','f',3),('bulkvel','f',3),('m','f'),
