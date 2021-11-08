@@ -31,8 +31,8 @@ class RockstarCatalogue(HaloCatalogue):
         *pathname*: the path of the output folder with the individual RockStar outputs
 
         *format_revision*: Override the header's format revision information. Specify
-                    1, 2, or 'caterpillar' for Rockstar prior to 2014, post 2014, and
-                    customized for the caterpillar project respectively
+                    1, 2, 'rg', or 'caterpillar' for Rockstar prior to 2014, post 2014, 
+                    rockstar-galaxies, and customized for the caterpillar project respectively
 
         """
         HaloCatalogue.__init__(self, sim)
@@ -190,7 +190,7 @@ class RockstarCatalogueOneCpu(HaloCatalogue):
                           ('flags',np.int64),('n_core',np.int64),
                           ('min_pos_err','f'),('min_vel_err','f'),
                           ('min_bulkvel_err','f')], align=True), # Rockstar format v2, includes halfmass_radius
-        3: np.dtype([('id',np.int64),('pos','f',3),('vel','f',3),
+        'rg': np.dtype([('id',np.int64),('pos','f',3),('vel','f',3),
                           ('corevel','f',3),('bulkvel','f',3),('m','f'),
                           ('r','f'),
                           ('child_r','f'),('vmax_r','f'),('mgrav','f'),
