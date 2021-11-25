@@ -50,20 +50,9 @@ class RockstarCatalogue(HaloCatalogue):
             self._files.sort()
 
         if len(self._files)==0:
-            raise IOError("Could not find any Rockstar output. Try specifying pathname='/path/to/rockstar/outputfolder'")
-        # Debugging                                                                                                                                                                
-        print("HaloCatalogue: {0}".format(HaloCatalogue))
-        print("self._files: {0}".format(self._files))
-        print("self._files[0]: {0}".format(self._files[0]))
-        print("dummy: {0}".format(self._dummy))
-        # End                                                                                                                                                                      
+            raise IOError("Could not find any Rockstar output. Try specifying pathname='/path/to/rockstar/outputfolder'")                                                                                                                                                                      
         self._cpus = [RockstarCatalogueOneCpu(sim,dummy,file_i, format_revision=format_revision) for file_i in self._files]
         self._prune_files_from_wrong_scalefactor()
-        # Debugging                                                                                                                                                                
-        print("A RockstarCatalogueOneCpu object: {0}".format(RockstarCatalogueOneCpu(sim, dummy, self._files[0], format_revision=format_revision)))
-        print("self._cpus: {0}".format(self._cpus))
-        print("self._cpus[0]: {0}".format(self._cpus[0]))
-        # End
         self._cpus[0]._init_iord_to_fpos()
         for cpu in self._cpus:
             cpu._iord_to_fpos = self._cpus[0]._iord_to_fpos
@@ -282,13 +271,7 @@ class RockstarCatalogueOneCpu(HaloCatalogue):
             self._nhalos = self._head['num_halos'][0]
 
             self._load_rs_halos(f,sim)
-
-            # Debugging                                                                                                                                                            
-            print("self._head: {0}".format(self._head))
-            print("self.halo_type: {0}".format(self.halo_type))
-            print("self._nhalos: {0}".format(self._nhalos))
-            # End                                                                                                                                                                  
-
+                                                                                                                                                                
 
 
     def __len__(self):
@@ -366,10 +349,6 @@ class RockstarCatalogueOneCpu(HaloCatalogue):
             self._halo_lens[this_id-self._halo_min] = num_ptcls
             offset+=num_ptcls*np.dtype('int64').itemsize
             this_id+=1
-            # Debugging  
-            # If you print this, it'll make a serious mess of your terminal!
-            #print("halo_data: {0}".format(halo_data))                                                                                                                             
-            # End
 
 
     def _get_particles_for_halo(self, num):
