@@ -296,7 +296,7 @@ class RockstarCatalogueOneCpu(HaloCatalogue):
         if i<self._halo_min or i>=self._halo_max:
             raise KeyError("No such halo")
 
-        from . import load
+        from ..snapshot import load
         return load(self.base.filename, take=self._get_particles_for_halo(i))
 
     def _update_grp_array(self, ar):
