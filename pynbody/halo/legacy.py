@@ -45,7 +45,7 @@ class RockstarIntermediateCatalogue(HaloCatalogue):
             with util.open_(self._particles_filename) as f:
                 f.seek(self._halo_info['indstart'][num]*self._part_type.itemsize)
                 one_ptcl = np.fromfile(f,dtype=self._part_type,count=1)
-                from . import load
+                from .. import load
                 onep = load(self.base.filename, take = one_ptcl)
                 while not onep['grpid']:
                     one_ptcl = np.fromfile(f,dtype=self._part_type,count=1)
@@ -66,7 +66,7 @@ class RockstarIntermediateCatalogue(HaloCatalogue):
         if i>=len(self):
             raise KeyError("No such halo")
 
-        from . import load
+        from .. import load
         halo = load(self.base.filename, take=self._get_particles_for_halo(i))
         self._add_halo_id(halo, i)
         return halo
