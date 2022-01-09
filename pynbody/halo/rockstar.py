@@ -136,6 +136,10 @@ class RockstarCatalogue(HaloCatalogue):
         for file in glob.glob(os.path.join(os.path.dirname(sim.filename), 'halos*.bin')):
             if os.path.exists(file):
                 return True
+        if 'pathname' in kwargs:                                                                                
+            for file in glob.glob(os.path.join(os.path.dirname(kwargs['pathname']), 'halos*.bin')):
+                    if os.path.exists(file):
+                        return True
         return False
 
 
